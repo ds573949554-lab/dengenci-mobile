@@ -3,4 +3,11 @@ android/
 ios/
 .env
 *.log
-.git
+.expo/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
