@@ -1,16 +1,15 @@
 {
   "name": "dengenci-mobile",
   "version": "5.1.0",
-  "description": "鄧恩賜完美數字生命體 v5.0 - 移動端應用",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start"
   },
   "dependencies": {
-    "expo": "~51.0.0",
-    "expo-status-bar": "~1.12.0",
+    "expo": "~50.0.17",
+    "expo-status-bar": "~1.11.0",
     "react": "18.2.0",
-    "react-native": "^0.74.5"
+    "react-native": "0.73.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
