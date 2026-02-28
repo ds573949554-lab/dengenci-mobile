@@ -11,6 +11,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#0f0f1e"
     },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dengenci.mobile"
+    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -19,6 +24,15 @@
       "package": "com.dengenci.mobile",
       "versionCode": 510
     },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#6B4EE6"
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "36056620-19fa-4233-8006-1172950b5fdd"

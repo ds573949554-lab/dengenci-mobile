@@ -1,0 +1,62 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Setup EAS
+      uses: expo/expo-github-action@v8
+      with:
+        eas-version: latest
+        token: ${{ secrets.EXPO_TOKEN }}
+
+    - name: Install dependencies
+      run: npm ci --legacy-peer-deps
+
+    - name: Build Android APK
+      run: eas build --platform android --profile preview --non-interactive
+
+    - name: Download APK
+      run: |
+        BUILD_URL=$(eas build:list --platform android --limit 1 --json | jq -r '.[0].artifacts.buildUrl')
+        curl -L -o dengenci-v5.1.0.apk "$BUILD_URL"
+
+    - name: Upload APK to GitHub Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dengenci-v5.1.0.apk
+        tag_name: v5.1.0
+        name: 鄧恩賜 v5.1.0
+        body: |
+          鄧恩賜完美數字生命體 v5.1.0
+
+          ## 新功能
+          - 28 位 Agent 智能會議室系統
+          - OTA 自動更新
+          - 粵語語音交互 (HiuMaan v8.2.2)
+          - 父子 Agent 任務委派
+          - 10 步自動化工作流
+
+          ## 安裝
+          直接下載 APK 安裝即可
+
+          但願人長久，千里共恩賜
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
