@@ -37,6 +37,12 @@ jobs:
     - name: Prebuild Android
       run: npx expo prebuild --platform android
       
+    - name: Fix Kotlin Version
+      run: |
+        cd android
+        sed -i 's/kotlinVersion = "1.9.24"/kotlinVersion = "1.9.25"/g' build.gradle
+        sed -i 's/kotlin-gradle-plugin:1.9.24/kotlin-gradle-plugin:1.9.25/g' build.gradle
+        
     - name: Build APK
       run: |
         cd android
