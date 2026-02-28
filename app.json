@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "鄧恩賜 v5.0",
+    "slug": "dengenci-mobile",
+    "version": "5.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f0f1e"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dengenci.mobile"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6B4EE6"
+      },
+      "package": "com.dengenci.mobile",
+      "versionCode": 510
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#6B4EE6"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "36056620-19fa-4233-8006-1172950b5fdd"
+      }
+    },
+    "owner": "ds573949554"
+  }
+}
