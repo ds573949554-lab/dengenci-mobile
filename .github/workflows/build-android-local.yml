@@ -37,24 +37,10 @@ jobs:
     - name: Prebuild Android
       run: npx expo prebuild --platform android --clean
       
-    - name: Fix Kotlin Version
-      run: |
-        cd android
-        # Update root build.gradle
-        sed -i 's/ext.kotlinVersion = "1.9.24"/ext.kotlinVersion = "1.9.25"/g' build.gradle
-        sed -i 's/kotlinVersion = "1.9.24"/kotlinVersion = "1.9.25"/g' build.gradle
-        # Add kotlin version to project build.gradle if not exists
-        if ! grep -q "kotlinVersion" build.gradle; then
-          sed -i '/^buildscript {/a\    ext.kotlinVersion = "1.9.25"' build.gradle
-        fi
-        # Update app build.gradle
-        sed -i 's/kotlin("android") version "1.9.24"/kotlin("android") version "1.9.25"/g' app/build.gradle
-        cat build.gradle | head -30
-        
     - name: Build APK
       run: |
         cd android
-        ./gradlew assembleRelease --no-daemon --stacktrace
+        ./gradlew assembleRelease --no-daemon
       env:
         ANDROID_HOME: ${{ env.ANDROID_SDK_ROOT }}
         
